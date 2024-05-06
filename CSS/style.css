@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-size: 16px; /* Establecer un tamaño de fuente base */
+}
+
+#navbar {
+
+  display: flex;
+  align-items: center; /* Centrar verticalmente los elementos */
+  justify-content: space-between; /* Añadido para espaciar los elementos */
+  flex-wrap: nowrap; /* Evitar que los elementos se envuelvan */
+  height: 15vh;
+  width: 100%;
+  border-bottom: 3px solid rgba(128, 128, 128, 0.7);
+}
+
+#buttonstore {
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 2%; /* Utilizar porcentajes para el margen izquierdo */
+}
+
+#logotienda {
+  width: 2.81rem;
+  height: 2.81rem;
+}
+
+
+
+#bshop {
+  cursor: pointer;
+  margin-right: 2%; /* Utilizar porcentajes para el margen derecho */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto; /* Alinear a la derecha */
+}
+
+#shop {
+  width: 30px;
+  height: 30px;
+}
+
+main {
+  min-height: 70vh; /* Cambiado a min-height para asegurar que siempre ocupe al menos el 70% del viewport height */
+  width: 94%; /* Utilizar porcentajes para el ancho */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 70vh; /* Cambiado a min-height para asegurar que siempre ocupe al menos el 70% del viewport height */
+  justify-content: space-between; /* Distribuir uniformemente los elementos */
+}
+
+.grid-item {
+  flex: 1 0 calc(25% - 10px); /* Para 4 columnas con margen */
+  margin: 5px;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-item {
+    flex: 1 0 calc(50% - 10px); /* Para 2 columnas en pantallas más pequeñas */
+  }
+}
+
+footer {
+  height: 15vh;
+  width: 100%;
+  border-top: 3px solid rgba(128, 128, 128, 0.7);
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+}
+
+.backg {
+  background-color: rgba(116, 183, 116, 0.6);
+}
+
