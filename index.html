@@ -6,52 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto final</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script async src="script.js"></script>
+    <script async src="./js/script.js"></script> 
     <link rel="icon" href="img/flaticonTienda.png" />
 
 </head>
 
 <body>
-
     <!-- NavBar -->
 
     <div id="navbar" class="backg">
 
-        <button id="buttonstore">
+        <a href="index.html" id="buttonstore">
             <img src="img/LogoTienda.png" alt="logo tienda" id="logotienda">
-        </button>
+        </a>
 
-        <button id="bshop">
-            <img src="img/shop.png" alt="logo carrito" id="shop">
-        </button>
+        <div class="buscador">
+            <form  id="search">                
+                    <input type="text" id="campodebusqueda" placeholder="Buscar producto"/>               
+                    
+        
+                </form>
+        </div>
+
+        <a class="button-link" id="bshop" onclick="finalizarCompra()">
+            <img src="img/shop.png" alt="logo carrito" id="shop">            
+            <span id="carrito-cantidad">0</span>            <!-- contador sobre el icono del carrito -->
+        </a>
     </div>
-
-
-    <!-- Main -->
 
     <main>
         <div class="grid-container">
-            <div class="grid-item">1</div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">4</div>
-            <div class="grid-item">5</div>
-            <div class="grid-item">6</div>
-            <div class="grid-item">7</div>
-            <div class="grid-item">8</div>
-            <div class="grid-item">9</div>
-            <div class="grid-item">10</div>
-            <div class="grid-item">11</div>
-            <div class="grid-item">12</div>
+            <div class="grid-item" ><img src="img/aceite.webp"></br><button class="izquierda" onclick="descontar(aceite)">−</button><button class="derecha" onclick="agregar(aceite)">+</button><h3>Aceite</h3></div>
+            <div class="grid-item" ><img src="img/atun.webp"></br><button class="izquierda" onclick="descontar(atun)">−</button><button class="derecha" onclick="agregar(atun)">+</button><h3>Atún</h3></div>
+            <div class="grid-item" ><img src="img/cafe.webp"></br><button class="izquierda" onclick="descontar(cafe)">−</button><button class="derecha" onclick="agregar(cafe)">+</button><h3>Café</h3></div>
+            <div class="grid-item" ><img src="img/fideos.webp"></br><button class="izquierda" onclick="descontar(fideos)">−</button><button class="derecha" onclick="agregar(fideos)">+</button><h3>fideos</h3></div>
+            <div class="grid-item" ><img src="img/galletitas.webp"></br><button class="izquierda" onclick="descontar(galletitas)">−</button><button class="derecha" onclick="agregar(galletitas)">+</button><h3>Galletitas</h3></div>
+            <div class="grid-item" ><img src="img/gaseosa.webp"></br><button class="izquierda" onclick="descontar(gaseosa)">−</button><button class="derecha" onclick="agregar(gaseosa)">+</button><h3>Gaseosa</h3></div>
+            <div class="grid-item" ><img src="img/harina.webp"></br><button class="izquierda" onclick="descontar(harina)">−</button><button class="derecha" onclick="agregar(harina)">+</button><h3>Harina</h3></div>
+            <div class="grid-item" ><img src="img/manzana.webp"></br><button class="izquierda" onclick="descontar(manzana)">−</button><button class="derecha" onclick="agregar(manzana)">+</button><h3>Manzana</h3></div>
+            <div class="grid-item" ><img src="img/queso.webp"></br><button class="izquierda" onclick="descontar(queso)">−</button><button class="derecha" onclick="agregar(queso)">+</button><h3>Queso</h3></div>
+            <div class="grid-item" ><img src="img/sal.webp"></br><button class="izquierda" onclick="descontar(sal)">−</button><button class="derecha" onclick="agregar(sal)">+</button><h3>Sal fina</h3></div>
+            <div class="grid-item" ><img src="img/vino.webp"></br><button class="izquierda" onclick="descontar(vino)">−</button><button class="derecha" onclick="agregar(vino)">+</button><h3>Vino tinto</h3></div>
+            <div class="grid-item" ><img src="img/yerbamate.webp"></br><button class="izquierda" onclick="descontar(yerbaMate)">−</button><button class="derecha" onclick="agregar(yerbaMate)">+</button><h3>Yerba mate</h3></div>
         </div>
-
     </main>
 
     <!-- Footer -->
 
-    <footer class="backg">
-        <h1>Footer</h1>
+    <footer class="backg clearfix">
+        <h4>Desarrollo de tienda &#174;</h4>
     </footer>
 
 </body>
+
 </html>
+
+<!-- La idea de mi simulador es,que basándome de una tienda de mercado,el usuario pueda clickear sobre
+los productos y elegir que cantidad de los mismos quiere agregar al carrito de compras,luego al clickear
+sobre el icono del carro confirme la compra y cargue sus datos, el carrito se ve reflejado en formato de array
+y de tabla, en caso de faltar algun dato solicitado se muestra una alerta.Las funciones creadas son invocadas
+en el archivo HTML,como 'finalizarCompra()' o 'agregarItem()' -->

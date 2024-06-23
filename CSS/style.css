@@ -1,10 +1,11 @@
 body {
+  background-color: #E0F7FA;
   margin: 0;
-  font-size: 16px; /* Establecer un tamaño de fuente base */
+  font-size: 13px; /* Establecer un tamaño de fuente base */
+  font-family: sans-serif system-ui, apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #navbar {
-
   display: flex;
   align-items: center; /* Centrar verticalmente los elementos */
   justify-content: space-between; /* Añadido para espaciar los elementos */
@@ -25,8 +26,6 @@ body {
   width: 2.81rem;
   height: 2.81rem;
 }
-
-
 
 #bshop {
   cursor: pointer;
@@ -55,12 +54,25 @@ main {
 }
 
 .grid-item {
+  border: 1px solid white;
   flex: 1 0 calc(25% - 10px); /* Para 4 columnas con margen */
   margin: 5px;
-  background-color: #f2f2f2;
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.grid-item:hover {
+  border: 0.5px solid grey;
+  transition: all ease 0.6s;
+}
+
+.grid-item img {
+  background-color: transparent;
+  max-width: 70%; /* Ajustar el ancho máximo de la imagen al ancho del contenedor */
+  max-height: 70%; /* Ajustar la altura máxima de la imagen al alto del contenedor */
+  height: auto; /* Permitir que la altura se ajuste automáticamente para mantener la proporción */
 }
 
 @media screen and (max-width: 768px) {
@@ -74,11 +86,62 @@ footer {
   width: 100%;
   border-top: 3px solid rgba(128, 128, 128, 0.7);
   margin-top: auto;
-  position: fixed;
+  position: sticky;
   bottom: 0;
 }
 
 .backg {
   background-color: rgba(116, 183, 116, 0.6);
 }
+
+h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.izquierda {
+  background-color:rgba(116, 183, 116, 0.5);
+  width: 30px;
+  height: 30px;
+  align-items:flex-start;
+  cursor:default;
+}
+.izquierda:hover{
+  width: 35px;
+  height: 35px;
+}
+
+.derecha {
+  background-color:rgba(116, 183, 116, 0.5);
+  width: 30px;
+  height: 30px;
+  cursor:default;
+}
+.derecha:hover{
+  width: 35px;
+  height: 35px;
+}
+
+h4{
+  text-align: center;
+}
+
+.buscador {
+  margin-left: 150vh;
+}
+
+#campodebusqueda {
+  background-color: rgba(116, 183, 116, 0.5);
+  color: black;
+}
+
+#carrito-cantidad {
+  background-color: rgba(116, 183, 116, 0.5);
+  border-radius: 50%;
+  color: black;
+  font-size: 16px; 
+  padding: 5px 10px;
+}
+
+
 
