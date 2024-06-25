@@ -31,7 +31,6 @@ const descontar = (item) => {
   const index = carrito.findIndex(carritoItem => carritoItem.nombre === item.nombre);
   if (index !== -1) {
       carrito.splice(index, 1);
-      console.log(carrito);
       actualizarCantidadCarrito();
   } else {
       console.log("El producto no está en el carrito.");
@@ -40,7 +39,6 @@ const descontar = (item) => {
 
 const agregar = (item) => {
   carrito.push(item);
-  console.log(carrito);
   actualizarCantidadCarrito();
 };
 
@@ -124,5 +122,23 @@ campoTexto.addEventListener('input', function() {
   console.table(productosFiltrados)
 });
    
+ // Convertir datos a minúsculas y guardar en localStorage
 
+ function guardarDatos(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe
 
+  // Obtener valores del formulario y convertir a minúsculas
+  let nombre = document.getElementById('nombre').value.toLowerCase();
+  let apellido = document.getElementById('apellido').value.toLowerCase();
+  let email = document.getElementById('email').value.toLowerCase();
+  let telefono = document.getElementById('telefono').value.toLowerCase();
+
+  // Almacenar los datos en localStorage
+  localStorage.setItem('nombre', nombre);
+  localStorage.setItem('apellido', apellido);
+  localStorage.setItem('email', email);
+  localStorage.setItem('telefono', telefono);
+ }
+
+ // Asociar la función guardarDatos al evento submit del formulario
+ document.getElementById('miFormulario').addEventListener('submit', guardarDatos);

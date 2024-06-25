@@ -162,5 +162,13 @@ h4{
   padding: 5px 10px;
 }
 
+form input {
+  background-color: rgba(116, 183, 116, 0.5);
+}
 
-
+#submit {
+  transition: transform 0.2s ease; /* Agrega transición suave al cambio de tamaño */
+}
+#submit:hover {
+  transform: scale(1.25); /* Escala el botón al 125% del tamaño original al pasar el ratón por encima */
+}
