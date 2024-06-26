@@ -1,144 +1,78 @@
-let carrito = [];
-// CREACION DE CLASES PARA LOS PRODUCTOS
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 class Producto {
-  static id = 0;
+    static id = 0;
 
-  constructor(nombre, precio) {
-    (this.id = ++Producto.id), (this.nombre = nombre), (this.precio = precio);
-  }
+    constructor(nombre, precio, imagen) {
+        this.id = ++Producto.id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.imagen = imagen
+    }
 }
 
-// Instanciado de objetos + Array con productos del mercado
 const productosDelMercado = {
-  "aceite": new Producto("aceite", 1200),
-  "atun": new Producto("atun", 1700),
-  "cafe": new Producto("cafe", 2200),
-  "fideos": new Producto("fideos", 800),
-  "galletitas": new Producto("galletitas", 1100),
-  "gaseosa": new Producto("gaseosa", 1400),
-  "harina": new Producto("harina", 900),
-  "manzana": new Producto("manzana", 400),
-  "queso": new Producto("queso", 2500),
-  "sal": new Producto("sal", 850),
-  "vino": new Producto("vino", 4500),
-  "yerba mate": new Producto("yerba mate", 3200)
+  "aceite": new Producto("aceite", 1200, "img/aceite.webp"),
+  "atun": new Producto("atun", 1700, "img/atun.webp"),
+  "cafe": new Producto("cafe", 2200, "img/cafe.webp"),
+  "fideos": new Producto("fideos", 800, "img/fideos.webp"),
+  "galletitas": new Producto("galletitas", 1100, "img/galletitas.webp"),
+  "gaseosa": new Producto("gaseosa", 1400, "img/gaseosa.webp"),
+  "harina": new Producto("harina", 900, "img/harina.webp"),
+  "manzana": new Producto("manzana", 400, "img/manzana.webp"),
+  "queso": new Producto("queso", 2500, "img/queso.webp"),
+  "sal": new Producto("sal", 850, "img/sal.webp"),
+  "vino": new Producto("vino", 4500, "img/vino.webp")
 };
 
-// funciones para agregar y descontar productos en el carrito con las flechas
 
 const descontar = (item) => {
-  const index = carrito.findIndex(carritoItem => carritoItem.nombre === item.nombre);
-  if (index !== -1) {
-      carrito.splice(index, 1);
-      actualizarCantidadCarrito();
-  } else {
-      console.log("El producto no está en el carrito.");
-  }
+    const index = carrito.findIndex(carritoItem => carritoItem.nombre === item.nombre);
+    if (index !== -1) {
+        carrito.splice(index, 1);
+        actualizarCantidadCarrito();
+        guardarCarrito();
+    } else {
+        console.log("El producto no está en el carrito.");
+    }
 };
 
 const agregar = (item) => {
-  carrito.push(item);
-  actualizarCantidadCarrito();
+    carrito.push(item);
+    actualizarCantidadCarrito();
+    guardarCarrito();
 };
 
 const actualizarCantidadCarrito = () => {
-  const cantidadCarrito = carrito.length;
-  const elementoCantidad = document.getElementById("carrito-cantidad");
-  elementoCantidad.textContent = cantidadCarrito;
+    const cantidadCarrito = carrito.length;
+    const elementoCantidad = document.getElementById("carrito-cantidad");
+    elementoCantidad.textContent = cantidadCarrito;
+};
+
+const guardarCarrito = () => {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 };
 
 document.querySelectorAll('.izquierda').forEach(button => {
-  button.addEventListener('click', () => {
-      const product = productosDelMercado[button.dataset.product];
-      descontar(product);
-  });
+    button.addEventListener('click', () => {
+        const product = productosDelMercado[button.dataset.product];
+        descontar(product);
+    });
 });
 
 document.querySelectorAll('.derecha').forEach(button => {
-  button.addEventListener('click', () => {
-      const product = productosDelMercado[button.dataset.product];
-      agregar(product);
-  });
+    button.addEventListener('click', () => {
+        const product = productosDelMercado[button.dataset.product];
+        agregar(product);
+    });
 });
-
-
-// const finalizarCompra = (event) => {
-//   const confirmacion = confirm("¿Desea confirmar la compra?");
-//   if (confirmacion) {
-//     let nombre, apellido, email, phone;
-
-//     nombre = prompt("Indique su nombre: ").trim().toLowerCase(); // trim() vacia espacios vacios,cargados pre y post palabra
-//     apellido = prompt("Indique su apellido: ").trim().toLowerCase();
-//     email = prompt("Indique su e-mail: ").trim().toLowerCase();
-//     phone = parseInt(prompt("Indique su número de teléfono: "));
-
-//     if (nombre === "" || apellido === "" || email === "" || phone === "")
-//       return alert(
-//         "!datos incompletos!,por favor reingrese los datos solicitados"
-//       ); // se utiliza '===' igualdad estricta para comparar valor y tipo,y asi null es null si el usuario no completa el campo.
-//     console.table(carrito);
-
-//     let datosComprador = [
-//       "Nombre: " + nombre,
-//       "Apellido: " + apellido,
-//       "e-mail: " + email,
-//       "teléfono: " + phone,
-//     ];
-
-//     datosComprador = datosComprador.join(" , ")
-//     const datosCompradorJson = JSON.stringify(datosComprador)
-//     localStorage.setItem("Datos almacenados del comprador", datosCompradorJson) // datos del comprador almacenados en Localstorage
-
-//     console.log("Datos del comprador: " + datosComprador)
-//     alert("¡Su compra ha sido exitosa!.Recibirá un email para finalizarla!")
-//     alert("Su total es : $" + calcularSubtotalCarrito())
-//   } else {
-//     alert("La compra ha sido cancelada.");
-//   }
-
-//   // Función para calcular el subtotal de todos los productos en el carrito
-//   function calcularSubtotalCarrito() {
-//     let subtotal = 0;
-//     for (const item of carrito) {
-//       subtotal += item.precio;
-//     }
-//     return subtotal;
-//   }
-
-//   // Almacenamiento de el carrito , convirtiendolo previamente en Json
-//   const compraCarrito = { carrito };
-//   const enJson = JSON.stringify(compraCarrito);  // convierto a cadena tipo JSON utilizando JSON.stringify
-//   localStorage.setItem("Lista de compras del carrito", enJson); // guardo localmente el "carrito" que instancia dos lineas mas arriba
-// };
-
-
-//   Búsqueda (filtrado)
 
 const campoTexto = document.getElementById('campodebusqueda');
 campoTexto.addEventListener('input', function() {
-  const valorFiltro = campoTexto.value.toLowerCase(); // Convertir a minúsculas lo que se escribe para comparar
-  const productosFiltrados = productosDelMercado.filter(producto => producto.nombre.toLowerCase().includes(valorFiltro));
-  console.table(productosFiltrados)
+    const valorFiltro = campoTexto.value.toLowerCase();
+    const productosFiltrados = Object.values(productosDelMercado).filter(producto => producto.nombre.toLowerCase().includes(valorFiltro));
+    console.table(productosFiltrados);
 });
-   
- // Convertir datos a minúsculas y guardar en localStorage
 
- function guardarDatos(event) {
-  event.preventDefault(); // Evitar que el formulario se envíe
 
-  // Obtener valores del formulario y convertir a minúsculas
-  let nombre = document.getElementById('nombre').value.toLowerCase();
-  let apellido = document.getElementById('apellido').value.toLowerCase();
-  let email = document.getElementById('email').value.toLowerCase();
-  let telefono = document.getElementById('telefono').value.toLowerCase();
 
-  // Almacenar los datos en localStorage
-  localStorage.setItem('nombre', nombre);
-  localStorage.setItem('apellido', apellido);
-  localStorage.setItem('email', email);
-  localStorage.setItem('telefono', telefono);
- }
-
- // Asociar la función guardarDatos al evento submit del formulario
- document.getElementById('miFormulario').addEventListener('submit', guardarDatos);

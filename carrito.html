@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto final</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script async src="./js/script.js"></script>
+    <script async src="./js/carrito.js"></script>
     <link rel="icon" href="img/flaticonTienda.png" />
 </head>
+
 <body>
     <!-- NavBar -->
     <div id="navbar" class="backg">
         <a href="index.html" id="buttonstore">
             <img src="img/LogoTienda.png" alt="logo tienda" id="logotienda">
         </a>
-
         <div class="buscador">
             <form>
                 <input type="text" id="campodebusqueda" autocomplete="off" placeholder="Buscar producto" value="" />
@@ -22,12 +23,15 @@
         </div>
     </div>
     <main>
-        <div class="top-content">
-            <!-- Contenido del primer div (arriba) -->
-             <h1>cartSelection</h1></div><br><br><br><br><br><br><br><br><br><br>
+        <div class="top-content cartSelection">
+            <!-- Debo visualizar los productos seleccionados -->
         </div>
         <div class="bottom-content">
             <form id="miFormulario" action="#" method="post">
+                <div>
+                    <label type="submit">Total:</label>
+                    <input type="text" id="total" name="total" readonly>
+                </div><br>
                 <div>
                     <label for="nombre">Nombre:</label><br>
                     <input type="text" id="nombre" name="nombre" required>
@@ -43,17 +47,17 @@
                 <div>
                     <label for="telefono">Teléfono:</label><br>
                     <input type="tel" id="telefono" name="telefono" required>
-                </div></br>
+                </div><br>                
                 <div>
-                    <input id="submit" type="submit" value="Enviar">
+                    <input id="submit" type="submit" value="Finalizar compra">
                 </div>
             </form>
         </div>
     </main>
-
     <!-- Footer -->
     <footer class="backg clearfix">
         <h4>Desarrollo de tienda &#174;</h4>
     </footer>
 </body>
+
 </html>

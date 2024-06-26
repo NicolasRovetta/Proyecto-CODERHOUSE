@@ -1,4 +1,3 @@
-/* General resets and box-sizing */
 * {
   margin: 0;
   padding: 0;
@@ -172,3 +171,26 @@ form input {
 #submit:hover {
   transform: scale(1.25); /* Escala el botón al 125% del tamaño original al pasar el ratón por encima */
 }
+
+.cart-item {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+}
+
+.cantidad {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(78, 134, 78, 0.8);
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
