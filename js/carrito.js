@@ -6,22 +6,41 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
 
     if (!carrito.length) {
-        cartSelection.innerHTML = "<h2>No hay productos en el carrito.</h2>";"<br>"
-        totalInput.value = total.toFixed(2); // Mostrar total como 0.00 si no hay productos
+        cartSelection.innerHTML = "<h2>No hay productos en el carrito.</h2><br>"; 
+        if (totalInput) {
+            totalInput.value = `$0.00`; // Mostrar total como 0.00 si no hay productos
+        }
         return;
     }
 
-    carrito.forEach(producto => {
+
+
+    
+    carrito.forEach((producto, index) => {
         const productDiv = document.createElement('div');
         productDiv.classList.add('cart-item');
         productDiv.innerHTML = `
-            <img src="img/${producto.nombre}.webp" alt="${producto.nombre}" />`;
+            <img src="${producto.imagen}" alt="${producto.nombre}" />
+            <p>${producto.nombre}</p>
+            <p>Precio: $${producto.precio}</p>
+            <button class="remove-btn" data-index="${index}">-</button>`;  //agrego boton para eliminar producto en la cart
         cartSelection.appendChild(productDiv);
 
         total += parseFloat(producto.precio);
     });
 
-    totalInput.value = total.toFixed(2); // Mostrar el total con dos decimales
+    if (totalInput) {
+        totalInput.value = `$${total.toFixed(2)}`; // Mostrar el total con dos decimales
+    }
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const index = event.target.dataset.index;
+            carrito.splice(index, 1); // Eliminar producto del array
+            localStorage.setItem('carrito', JSON.stringify(carrito)); // Actualizar localStorage
+            location.reload(); // Recargar la página para actualizar el carrito
+        });
+    });
 });
 
 // FORMULARIO

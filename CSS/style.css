@@ -174,14 +174,31 @@ form input {
 
 .cart-item {
   position: relative;
-  display: inline-block;
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
 .cart-item img {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px; /* Aumentar el margen derecho para dejar espacio para el botón */
 }
+
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 0; /* Ajustar el botón a la esquina derecha sin margen */
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Ajustar el padding para hacer el botón más grande */
+  cursor: pointer;
+}
+
+
 
 .cantidad {
   position: absolute;
