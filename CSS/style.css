@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Arial', sans-serif; /* Fuente agradable */
+  font-size: 2.5rem; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  opacity: 0.8; /* Opacidad */
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+  border-radius: 30px;
+}
+
 body {
   background-color: #E0F7FA;
   margin: 0;
@@ -104,7 +117,12 @@ footer {
 
 .backg {
   background-color: rgba(116, 183, 116, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Ajusta la altura según sea necesario */
 }
+
 
 h3 {
   text-align: center;
@@ -134,10 +152,6 @@ h3 {
   height: 35px;
 }
 
-h4{
-  text-align: center;
-}
-
 .buscador {
   flex-grow: 1; /* Permitir que el buscador crezca */
   margin: 0 20px; /* Margen simplificado */
@@ -148,7 +162,7 @@ h4{
   width: 100%;
 }
 
-#campodebusqueda {
+.campodebusqueda {
   background-color: rgba(116, 183, 116, 0.5);
   color: black;
 }
@@ -180,7 +194,6 @@ form input {
   border: 1px solid #ccc;
   padding: 10px;
 }
-
 .cart-item img {
   width: 50px;
   height: 50px;
@@ -198,8 +211,6 @@ form input {
   cursor: pointer;
 }
 
-
-
 .cantidad {
   position: absolute;
   bottom: 5px;
@@ -211,3 +222,6 @@ form input {
   font-size: 14px;
 }
 
+h4 {
+  text-align: ;
+}
