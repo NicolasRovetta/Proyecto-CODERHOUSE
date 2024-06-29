@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return;
     }
-
-
-
     
     carrito.forEach((producto, index) => {
         const productDiv = document.createElement('div');
@@ -28,11 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         total += parseFloat(producto.precio);
     });
-
+    
     if (totalInput) {
         totalInput.value = `$${total.toFixed(2)}`; // Mostrar el total con dos decimales
     }
-
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const index = event.target.dataset.index;
@@ -44,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // FORMULARIO
-
 document.getElementById('miFormulario').addEventListener('submit', guardarDatos);
 
 function guardarDatos(event) {
