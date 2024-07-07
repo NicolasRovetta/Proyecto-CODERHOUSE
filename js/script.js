@@ -88,6 +88,7 @@ const crearTarjetaDeProductos = (productos = productosDelMercado) => {
   }
 };
 
+
 window.onload = () => {
   crearTarjetaDeProductos();
   // Evento para la búsqueda de productos
@@ -148,5 +149,3 @@ form.appendChild(input);
 
 // Añadir el formulario al div
 buscadorDiv.appendChild(form);
-
-

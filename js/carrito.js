@@ -1,43 +1,81 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const cartSelection = document.querySelector(".cartSelection");
-  const totalInput = document.getElementById("total");
 
-  let total = 0;
-
-  if (!carrito.length) {
-    cartSelection.innerHTML = "<h2>No hay productos en el carrito.</h2><br>";
-    if (totalInput) {
-      totalInput.value = `$0.00`; // Mostrar total como 0.00 si no hay productos
-    }
-    return;
+   // Verificar si ya se mostró el mensaje de bienvenida en esta sesión
+   if (!sessionStorage.getItem("bienvenidaMostrada")) {
+    swal("¡Bienvenido al carrito de tu compra!"); // Mensaje de bienvenida
+    sessionStorage.setItem("bienvenidaMostrada", "true"); // cualquier ejecucion dentro de la sesion no resetea el swall de bienvenida
   }
 
+  // Obtener el carrito desde localStorage o inicializarlo como un array vacío
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  
+  // Seleccionar el contenedor del carrito en el DOM
+  const cartSelection = document.querySelector(".cartSelection");
+  
+  // Seleccionar el elemento de entrada para el total en el DOM
+  const totalInput = document.getElementById("total");
+
+  // Llamar a la función que gestiona el carrito pasándole los parámetros necesarios
+  gestionarCarrito(carrito, cartSelection, totalInput);
+});
+
+function gestionarCarrito(carrito, cartSelection, totalInput) {
+  let total = 0; // Inicializar el total a 0
+
+  // Verificar si el carrito está vacío
+  if (!carrito.length) {
+    cartSelection.innerHTML = "<h2>No hay productos en el carrito.</h2><br>";
+
+    // Mostrar el total como 0.00 si no hay productos en el carrito
+    if (totalInput) {
+      totalInput.value = `$0.00`;
+    }
+    return; // Terminar la ejecución de la función
+  }
+
+  // Iterar sobre cada producto en el carrito
   carrito.forEach((producto, index) => {
+    // Crear un nuevo div para el producto
     const productDiv = document.createElement("div");
     productDiv.classList.add("cart-item");
+
+    // Agregar contenido HTML al div del producto
     productDiv.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" />
-            <p>${producto.nombre}</p>
-            <p>Precio: $${producto.precio}</p>
-            <button class="remove-btn" data-index="${index}">-</button>`; //agrego boton para eliminar producto en la cart
+      <img src="${producto.imagen}" alt="${producto.nombre}" />
+      <p>${producto.nombre}</p>
+      <p>Precio: $${producto.precio}</p>
+      <button class="remove-btn" data-index="${index}">-</button>`; // Botón para eliminar producto
+
+    // Agregar el div del producto al contenedor del carrito
     cartSelection.appendChild(productDiv);
 
+    // Sumar el precio del producto al total
     total += parseFloat(producto.precio);
   });
 
+  // Mostrar el total con dos decimales
   if (totalInput) {
-    totalInput.value = `$${total.toFixed(2)}`; // Mostrar el total con dos decimales
+    totalInput.value = `$${total.toFixed(2)}`;
   }
+
+  // Agregar evento click a cada botón de eliminar
   document.querySelectorAll(".remove-btn").forEach((button) => {
     button.addEventListener("click", (event) => {
+      // Obtener el índice del producto a eliminar
       const index = event.target.dataset.index;
-      carrito.splice(index, 1); // Eliminar producto del array
-      localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualizar localStorage
-      location.reload(); // Recargar la página para actualizar el carrito
+
+      // Eliminar el producto del array
+      carrito.splice(index, 1);
+
+      // Actualizar el carrito en localStorage
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+
+      // Recargar la página para actualizar el carrito
+      location.reload();
     });
   });
-});
+}
 
 // FORMULARIO
 const formulario = document.getElementById("miFormulario");
@@ -56,6 +94,14 @@ function guardarDatos(event) {
   localStorage.setItem("apellido", apellido);
   localStorage.setItem("email", email);
   localStorage.setItem("telefono", telefono);
+
+  // Mostrar SweetAlert después de guardar los datos en localStorage
+  swal({
+    title: "¡Gracias por tu compra!",
+    text: "te enviaremos un e-mail con el ticket de compra",
+    icon: "success",
+    button: "Aceptar",
+  });
 
   // Resetear el formulario después de guardar los datos
   formulario.reset();
