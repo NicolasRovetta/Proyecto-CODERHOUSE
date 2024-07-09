@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto final</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script defer src="./js/carrito.js"></script>  <!--En este caso tuve que cambiar a defer ya que asegura que el script se descargue en segundo plano como async, pero se ejecutará solo después de que el DOM se haya construido completamente(sino tenia que actualizar el buscador para ver los elemntos que tomaba del DOM del index.html)-->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- CDN para Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <script src="./js/carrito.js" defer></script>
+    <!--En este caso tuve que cambiar a defer ya que asegura que el script se descargue en segundo plano como async, pero se ejecutará solo después de que el DOM se haya construido completamente(sino tenia que actualizar el buscador para ver los elemntos que tomaba del DOM del index.html)-->
     <link rel="icon" href="img/flaticonTienda.png" />
 </head>
 
@@ -16,8 +17,8 @@
     <div id="navbar" class="backg">
         <a href="index.html" id="buttonstore">
             <img src="img/LogoTienda.png" alt="logo tienda" id="logotienda">
-        </a>        
-        <h1>Carrito de compras</h1>    
+        </a>
+        <h1>Carrito de compras</h1>
     </div>
     <main>
         <div class="top-content cartSelection">
@@ -44,7 +45,7 @@
                 <div>
                     <label for="telefono">Teléfono:</label><br>
                     <input type="tel" id="telefono" name="telefono" required>
-                </div><br>                
+                </div><br>
                 <div>
                     <input id="submit" type="submit" value="Finalizar compra">
                 </div>
@@ -55,6 +56,8 @@
     <footer class="backg clearfix">
         <h4>Desarrollo de tienda &#174;</h4>
     </footer>
+    <!-- CDN para Sweet Alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

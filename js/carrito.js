@@ -1,24 +1,21 @@
+// Verificar si ya se mostró el mensaje de bienvenida en esta sesión
+if (!sessionStorage.getItem("bienvenidaMostrada")) {
+  swal("¡Bienvenido al carrito de compra!"); // Mensaje de bienvenida
+  sessionStorage.setItem("bienvenidaMostrada", "true"); // cualquier ejecucion dentro de la sesion no resetea el swall de bienvenida
+}
 
-document.addEventListener("DOMContentLoaded", () => {
+// Obtener el carrito desde localStorage o inicializarlo como un array vacío
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-   // Verificar si ya se mostró el mensaje de bienvenida en esta sesión
-   if (!sessionStorage.getItem("bienvenidaMostrada")) {
-    swal("¡Bienvenido al carrito de tu compra!"); // Mensaje de bienvenida
-    sessionStorage.setItem("bienvenidaMostrada", "true"); // cualquier ejecucion dentro de la sesion no resetea el swall de bienvenida
-  }
+// Seleccionar el contenedor del carrito en el DOM
+const cartSelection = document.querySelector(".cartSelection");
 
-  // Obtener el carrito desde localStorage o inicializarlo como un array vacío
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  
-  // Seleccionar el contenedor del carrito en el DOM
-  const cartSelection = document.querySelector(".cartSelection");
-  
-  // Seleccionar el elemento de entrada para el total en el DOM
-  const totalInput = document.getElementById("total");
+// Seleccionar el elemento de entrada para el total en el DOM
+const totalInput = document.getElementById("total");
 
-  // Llamar a la función que gestiona el carrito pasándole los parámetros necesarios
-  gestionarCarrito(carrito, cartSelection, totalInput);
-});
+// Llamar a la función que gestiona el carrito pasándole los parámetros necesarios
+gestionarCarrito(carrito, cartSelection, totalInput);
+
 
 function gestionarCarrito(carrito, cartSelection, totalInput) {
   let total = 0; // Inicializar el total a 0
@@ -90,15 +87,18 @@ function guardarDatos(event) {
   let email = document.getElementById("email").value.toLowerCase();
   let telefono = document.getElementById("telefono").value.toLowerCase();
 
-  localStorage.setItem("nombre", nombre);
-  localStorage.setItem("apellido", apellido);
-  localStorage.setItem("email", email);
-  localStorage.setItem("telefono", telefono);
+  localStorage.setItem("nombre :", nombre);
+  localStorage.setItem("apellido :", apellido);
+  localStorage.setItem("e-mail :", email);
+  localStorage.setItem("telefono :", telefono);
 
-  // Mostrar SweetAlert después de guardar los datos en localStorage
+  // Mostrar SweetAlert después de guardar los datos en localStorage + fecha local con luxon,creando variable primero
+  const DateTime = luxon.DateTime
+  const horaDeCompra = DateTime.now().toJSDate()
+  localStorage.setItem("hora de compra :", horaDeCompra)  // Almaceno hora de compra para tener registro de ese pedido en particular
   swal({
     title: "¡Gracias por tu compra!",
-    text: "te enviaremos un e-mail con el ticket de compra",
+    text: `Te enviaremos un e-mail con el ticket de compra. Fecha: ${horaDeCompra}`,
     icon: "success",
     button: "Aceptar",
   });

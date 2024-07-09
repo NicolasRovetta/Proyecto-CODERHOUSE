@@ -33,6 +33,22 @@ const descontar = (item) => {
     carrito.splice(index, 1);
     actualizarCantidadCarrito();
     guardarCarrito();
+    Toastify({
+      text: "Producto eliminado del carrito",
+      duration: 3000,
+      close: false,
+      gravity: "top", 
+      position: "right", 
+      stopOnFocus: true, // Previene que se cierre el toast al pasar el cursor
+      style: {
+        background: "#00b09b",
+        color: "#fff",
+        width: "auto",
+        minWidth: "150px",
+        borderRadius: "8px",
+        padding: "10px 20px",
+      },
+    }).showToast();
   }
 };
 
@@ -40,6 +56,22 @@ const agregar = (item) => {
   carrito.push(item);
   actualizarCantidadCarrito();
   guardarCarrito();
+  Toastify({
+    text: "Producto agregado al carrito",
+    duration: 3000,
+    close: false,
+    gravity: "top", 
+    position: "right", 
+    stopOnFocus: true, 
+    style: {
+      background: "#00b09b",
+      color: "#fff",
+      width: "auto",
+      minWidth: "150px",
+      borderRadius: "8px",
+      padding: "10px 20px",
+    },
+  }).showToast();
 };
 
 const actualizarCantidadCarrito = () => {
