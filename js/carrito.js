@@ -1,20 +1,20 @@
 // Verificar si ya se mostró el mensaje de bienvenida en esta sesión
 if (!sessionStorage.getItem("bienvenidaMostrada")) {
-  swal("¡Bienvenido al carrito de compra!"); // Mensaje de bienvenida
-  sessionStorage.setItem("bienvenidaMostrada", "true"); // cualquier ejecucion dentro de la sesion no resetea el swall de bienvenida
+  swal("¡Bienvenido al carrito de compra!") // Mensaje de bienvenida
+  sessionStorage.setItem("bienvenidaMostrada", "true") // cualquier ejecucion dentro de la sesion no resetea el swall de bienvenida
 }
 
 // Obtener el carrito desde localStorage o inicializarlo como un array vacío
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 // Seleccionar el contenedor del carrito en el DOM
-const cartSelection = document.querySelector(".cartSelection");
+const cartSelection = document.querySelector(".cartSelection")
 
 // Seleccionar el elemento de entrada para el total en el DOM
 const totalInput = document.getElementById("total");
 
 // Llamar a la función que gestiona el carrito pasándole los parámetros necesarios
-gestionarCarrito(carrito, cartSelection, totalInput);
+gestionarCarrito(carrito, cartSelection, totalInput)
 
 
 function gestionarCarrito(carrito, cartSelection, totalInput) {
@@ -48,30 +48,30 @@ function gestionarCarrito(carrito, cartSelection, totalInput) {
     cartSelection.appendChild(productDiv);
 
     // Sumar el precio del producto al total
-    total += parseFloat(producto.precio);
+    total += parseFloat(producto.precio)
   });
 
   // Mostrar el total con dos decimales
   if (totalInput) {
-    totalInput.value = `$${total.toFixed(2)}`;
+    totalInput.value = `$${total.toFixed(2)}`
   }
 
   // Agregar evento click a cada botón de eliminar
   document.querySelectorAll(".remove-btn").forEach((button) => {
     button.addEventListener("click", (event) => {
       // Obtener el índice del producto a eliminar
-      const index = event.target.dataset.index;
+      const index = event.target.dataset.index
 
       // Eliminar el producto del array
-      carrito.splice(index, 1);
+      carrito.splice(index, 1)
 
       // Actualizar el carrito en localStorage
-      localStorage.setItem("carrito", JSON.stringify(carrito));
+      localStorage.setItem("carrito", JSON.stringify(carrito))
 
       // Recargar la página para actualizar el carrito
-      location.reload();
-    });
-  });
+      location.reload()
+    })
+  })
 }
 
 // FORMULARIO

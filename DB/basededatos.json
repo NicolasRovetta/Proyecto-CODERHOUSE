@@ -1,0 +1,72 @@
+{
+    "productosDelMercado": {
+      "aceite": {
+        "id": 1,
+        "nombre": "aceite",
+        "precio": 1200,
+        "imagen": "img/aceite.webp"
+      },
+      "atun": {
+        "id": 2,
+        "nombre": "atun",
+        "precio": 1700,
+        "imagen": "img/atun.webp"
+      },
+      "cafe": {
+        "id": 3,
+        "nombre": "cafe",
+        "precio": 2200,
+        "imagen": "img/cafe.webp"
+      },
+      "fideos": {
+        "id": 4,
+        "nombre": "fideos",
+        "precio": 800,
+        "imagen": "img/fideos.webp"
+      },
+      "galletitas": {
+        "id": 5,
+        "nombre": "galletitas",
+        "precio": 1100,
+        "imagen": "img/galletitas.webp"
+      },
+      "gaseosa": {
+        "id": 6,
+        "nombre": "gaseosa",
+        "precio": 1400,
+        "imagen": "img/gaseosa.webp"
+      },
+      "harina": {
+        "id": 7,
+        "nombre": "harina",
+        "precio": 900,
+        "imagen": "img/harina.webp"
+      },
+      "manzana": {
+        "id": 8,
+        "nombre": "manzana",
+        "precio": 400,
+        "imagen": "img/manzana.webp"
+      },
+      "queso": {
+        "id": 9,
+        "nombre": "queso",
+        "precio": 2500,
+        "imagen": "img/queso.webp"
+      },
+      "sal": {
+        "id": 10,
+        "nombre": "sal",
+        "precio": 850,
+        "imagen": "img/sal.webp"
+      },
+      "vino": {
+        "id": 11,
+        "nombre": "vino",
+        "precio": 4500,
+        "imagen": "img/vino.webp"
+      }
+    }
+  }
+  
+  

@@ -1,28 +1,31 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let carrito = [];
 
-class Producto {
-  static id = 0;
-
-  constructor(nombre, precio, imagen) {
-    this.id = ++Producto.id;
-    this.nombre = nombre;
-    this.precio = precio;
-    this.imagen = imagen;
-  }
+try {
+  carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+} catch (error) {
+  // Manejo de error: podrías mostrar un mensaje al usuario en la interfaz, por ejemplo.
+  mostrarMensajeError("Error al cargar el carrito desde el localStorage.");
+} finally {
+  // Este bloque se ejecutará siempre, independientemente de si hubo un error o no
 }
 
-const productosDelMercado = {
-  aceite: new Producto("aceite", 1200, "img/aceite.webp"),
-  atun: new Producto("atun", 1700, "img/atun.webp"),
-  cafe: new Producto("cafe", 2200, "img/cafe.webp"),
-  fideos: new Producto("fideos", 800, "img/fideos.webp"),
-  galletitas: new Producto("galletitas", 1100, "img/galletitas.webp"),
-  gaseosa: new Producto("gaseosa", 1400, "img/gaseosa.webp"),
-  harina: new Producto("harina", 900, "img/harina.webp"),
-  manzana: new Producto("manzana", 400, "img/manzana.webp"),
-  queso: new Producto("queso", 2500, "img/queso.webp"),
-  sal: new Producto("sal", 850, "img/sal.webp"),
-  vino: new Producto("vino", 4500, "img/vino.webp"),
+// Cargar productos desde un archivo JSON
+let productosDelMercado = {};
+
+const cargarProductos = async () => {
+  try {
+    const response = await fetch('./DB/basededatos.json');
+    const data = await response.json();
+    productosDelMercado = data.productosDelMercado;
+    crearTarjetaDeProductos();
+  } catch (error) {
+    swal({
+      title: "Error",
+      text: "No se pudo conectar con la base de datos.",
+      icon: "error",
+      button: "Ok",
+    });
+  }
 };
 
 const descontar = (item) => {
@@ -35,7 +38,7 @@ const descontar = (item) => {
     guardarCarrito();
     Toastify({
       text: "Producto eliminado del carrito",
-      duration: 3000,
+      duration: 1000,
       close: false,
       gravity: "top", 
       position: "right", 
@@ -58,7 +61,7 @@ const agregar = (item) => {
   guardarCarrito();
   Toastify({
     text: "Producto agregado al carrito",
-    duration: 3000,
+    duration: 1000,
     close: false,
     gravity: "top", 
     position: "right", 
@@ -118,10 +121,10 @@ const crearTarjetaDeProductos = (productos = productosDelMercado) => {
       contenedor.appendChild(div);
     }
   }
-};
-
+}
 
 window.onload = () => {
+  cargarProductos();
   crearTarjetaDeProductos();
   // Evento para la búsqueda de productos
   document.getElementById('campodebusqueda').addEventListener('input', (event) => {
@@ -135,8 +138,7 @@ window.onload = () => {
           productosFiltrados[key] = producto;
         }
       }
-    }
-    
+    }    
     crearTarjetaDeProductos(productosFiltrados);
   });
 };
@@ -144,24 +146,22 @@ window.onload = () => {
 // Guardado en LocalStorage del carrito
 const guardarCarrito = () => {
   localStorage.setItem("carrito", JSON.stringify(carrito));
-};
+}
 
 document.querySelectorAll(".izquierda").forEach((button) => {
   button.addEventListener("click", () => {
     const product = productosDelMercado[button.dataset.product];
     descontar(product);
-  });
-});
+  })
+})
 
 document.querySelectorAll(".derecha").forEach((button) => {
   button.addEventListener("click", () => {
-    const product = productosDelMercado[button.dataset.product];
-    agregar(product);
-  });
-});
-
+    const product = productosDelMercado[button.dataset.product]
+    agregar(product)
+  })
+})
 // Buscador
-
 // Obtener el elemento div con la clase 'buscador'
 const buscadorDiv = document.querySelector('.buscador');
 
