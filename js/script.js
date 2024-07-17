@@ -3,11 +3,17 @@ let carrito = [];
 try {
   carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 } catch (error) {
-  // Manejo de error: podrías mostrar un mensaje al usuario en la interfaz, por ejemplo.
+  swal({
+    title: "Error",
+    text: "No se pudo cargar el carrito.",
+    icon: "error",
+    button: "Ok",
+  });
   mostrarMensajeError("Error al cargar el carrito desde el localStorage.");
 } finally {
   // Este bloque se ejecutará siempre, independientemente de si hubo un error o no
 }
+
 
 // Cargar productos desde un archivo JSON
 let productosDelMercado = {};

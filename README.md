@@ -1,1 +1,4 @@
 Proyecto final de un simulador de una tienda e-commerce
+
+ Simulador de una tienda de compras, se importan los objetos desde el archivo .json, luego de este array de objetos(productos)se crean cartas de presentacion para usarlas a traves del DOM y conectarlas al HTML. La tienda permite filtrar en el campo de búsqueda los productos disponibles,agregarlo y sacarlos del carrito en la página principal visualizando un mensaje con el toastify en la interfaz al hacer alguna de estas acciones; luego se puede pasar al carrito de compras donde veré los productos selecionados y el total de el carrito,puedo eliminar el producto que desee.
+ Para finalizar la compra debo llenar el formulario(estos datos al igual que los del carrito se almacenan localmente) y clickear en finalizar compra,donde nos aparecerá un sweetAlert confirmandonos la compra y dándonos la hora(que tambien se guarda localmete) a través de el framework Luxon.

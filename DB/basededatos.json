@@ -65,6 +65,12 @@
         "nombre": "vino",
         "precio": 4500,
         "imagen": "img/vino.webp"
+      },
+      "arroz": {
+        "id": 12,
+        "nombre": "arroz",
+        "precio": 1100,
+        "imagen": "img/arroz.webp"
       }
     }
   }
