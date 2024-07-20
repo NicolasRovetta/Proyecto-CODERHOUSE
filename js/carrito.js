@@ -16,7 +16,6 @@ const totalInput = document.getElementById("total");
 // Llamar a la función que gestiona el carrito pasándole los parámetros necesarios
 gestionarCarrito(carrito, cartSelection, totalInput)
 
-
 function gestionarCarrito(carrito, cartSelection, totalInput) {
   let total = 0; // Inicializar el total a 0
 
@@ -67,7 +66,7 @@ function gestionarCarrito(carrito, cartSelection, totalInput) {
 
       // Actualizar el carrito en localStorage
       localStorage.setItem("carrito", JSON.stringify(carrito))
-
+      
       // Recargar la página para actualizar el carrito
       location.reload()
     })

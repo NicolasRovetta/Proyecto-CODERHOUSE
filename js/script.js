@@ -130,21 +130,23 @@ const crearTarjetaDeProductos = (productos = productosDelMercado) => {
 }
 
 window.onload = () => {
-  cargarProductos();
-  crearTarjetaDeProductos();
+  cargarProductos()
+  crearTarjetaDeProductos()
+
   // Evento para la búsqueda de productos
-  document.getElementById('campodebusqueda').addEventListener('input', (event) => {
-    const query = event.target.value.toLowerCase();
-    const productosFiltrados = {};
+  document.querySelector('.campodebusqueda').addEventListener('input', (event) => {
+    const query = event.target.value.toLowerCase()
+    const productosFiltrados = {}
     
     for (const key in productosDelMercado) {
       if (productosDelMercado.hasOwnProperty(key)) {
-        const producto = productosDelMercado[key];
+        const producto = productosDelMercado[key]
         if (producto.nombre.toLowerCase().includes(query)) {
-          productosFiltrados[key] = producto;
+          productosFiltrados[key] = producto
         }
       }
     }    
+
     crearTarjetaDeProductos(productosFiltrados);
   });
 };
@@ -167,23 +169,3 @@ document.querySelectorAll(".derecha").forEach((button) => {
     agregar(product)
   })
 })
-// Buscador
-// Obtener el elemento div con la clase 'buscador'
-const buscadorDiv = document.querySelector('.buscador');
-
-// Crear el formulario
-const form = document.createElement('form');
-
-// Crear el input de texto
-const input = document.createElement('input');
-input.type = 'text';
-input.id = 'campodebusqueda';
-input.autocomplete = 'off';
-input.placeholder = 'Buscar producto';
-input.value = '';
-
-// Añadir el input al formulario
-form.appendChild(input);
-
-// Añadir el formulario al div
-buscadorDiv.appendChild(form);
