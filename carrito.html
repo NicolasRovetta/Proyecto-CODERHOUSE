@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +10,7 @@
     <!--En este caso tuve que cambiar a defer ya que asegura que el script se descargue en segundo plano como async, pero se ejecutará solo después de que el DOM se haya construido completamente(sino tenia que actualizar el buscador para ver los elemntos que tomaba del DOM del index.html)-->
     <link rel="icon" href="img/flaticonTienda.png" />
 </head>
-
 <body>
-    <!-- NavBar -->
     <div id="navbar" class="backg">
         <a href="index.html" id="buttonstore">
             <img src="img/LogoTienda.png" alt="logo tienda" id="logotienda">
@@ -22,7 +19,6 @@
     </div>
     <main>
         <div class="top-content cartSelection">
-            <!-- Debo visualizar los productos seleccionados -->
         </div>
         <div class="bottom-content">
             <form id="miFormulario" action="#" method="post">
@@ -52,12 +48,9 @@
             </form>
         </div>
     </main><br>
-    <!-- Footer -->
     <footer class="backg clearfix">
         <h4>Desarrollo de tienda &#174;</h4>
     </footer>
-    <!-- CDN para Sweet Alert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-
 </html>

@@ -6,12 +6,13 @@
     <title>Proyecto final</title>
     <link rel="stylesheet" href="CSS/style.css">
     <script async src="./js/script.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="icon" href="img/flaticonTienda.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
+
 <body>
-    <!-- NavBar -->
     <div id="navbar" class="backg">
         <a href="index.html" id="buttonstore">
             <img src="img/LogoTienda.png" alt="logo tienda" id="logotienda">
@@ -20,23 +21,21 @@
             <form>
                 <input type="text" class="campodebusqueda" placeholder="Buscar...">
             </form>
-        </div> 
-         <h1>Tienda de compras</h1>
+        </div>
+        <h1>Tienda de compras</h1>
         <a class="button-link" id="bshop" href="carrito.html">
             <img src="img/shop.png" alt="logo carrito" id="shop">
             <span id="carrito-cantidad">0</span> <!-- contador -->
         </a>
     </div>
     <main>
-        <h2>    Almacen</h2>
+        <h2>Almacen</h2>
         <div class="grid-container" id="grid-container"></div>
-    </main>    
-    <!-- Footer -->
+    </main>
     <footer class="backg clearfix">
         <h4>Desarrollo de tienda &#174;</h4>
     </footer>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <!-- CDN para Sweet Alert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

@@ -169,3 +169,4 @@ document.querySelectorAll(".derecha").forEach((button) => {
     agregar(product)
   })
 })
+
