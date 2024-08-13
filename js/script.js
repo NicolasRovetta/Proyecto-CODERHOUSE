@@ -1,3 +1,5 @@
+
+
 let carrito = [];
 
 try {
@@ -102,32 +104,65 @@ const crearTarjetaDeProductos = (productos = productosDelMercado) => {
       const img = document.createElement("img");
       img.src = producto.imagen;
 
+      // Contador de cantidad
+      const cantidadContenedor = document.createElement("div");
+      cantidadContenedor.className = "cantidad-contenedor";
+
       const botonIzquierda = document.createElement("button");
       botonIzquierda.className = "izquierda";
       botonIzquierda.textContent = "−";
-      botonIzquierda.setAttribute("data-product", producto.nombre);
-      botonIzquierda.onclick = () => descontar(producto);
+
+      const contador = document.createElement("span");
+      contador.className = "contador";
+      contador.textContent = "0"; // Inicialmente 0
 
       const botonDerecha = document.createElement("button");
       botonDerecha.className = "derecha";
       botonDerecha.textContent = "+";
-      botonDerecha.setAttribute("data-product", producto.nombre);
-      botonDerecha.onclick = () => agregar(producto);
+
+      botonIzquierda.onclick = () => {
+        if (parseInt(contador.textContent) > 0) {
+          contador.textContent = parseInt(contador.textContent) - 1;
+        }
+      };
+
+      botonDerecha.onclick = () => {
+        contador.textContent = parseInt(contador.textContent) + 1;
+      };
+
+      cantidadContenedor.appendChild(botonIzquierda);
+      cantidadContenedor.appendChild(contador);
+      cantidadContenedor.appendChild(botonDerecha);
 
       const h3 = document.createElement("h3");
       h3.textContent =
         producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1);
 
+      // Botón para agregar al carrito
+      const botonAgregar = document.createElement("button");
+      botonAgregar.className = "agregar-carrito";
+      botonAgregar.textContent = "Agregar al carrito";
+
+      botonAgregar.onclick = () => {
+        const cantidadSeleccionada = parseInt(contador.textContent);
+        if (cantidadSeleccionada > 0) {
+          for (let i = 0; i < cantidadSeleccionada; i++) {
+            agregar(producto); // Agrega la cantidad seleccionada al carrito
+          }
+          contador.textContent = "0"; // Resetea el contador después de agregar al carrito
+        }
+      };
+
       div.appendChild(img);
-      div.appendChild(document.createElement("br"));
-      div.appendChild(botonIzquierda);
-      div.appendChild(botonDerecha);
+      div.appendChild(cantidadContenedor);
+      div.appendChild(botonAgregar);
       div.appendChild(h3);
 
       contenedor.appendChild(div);
     }
   }
-}
+};
+
 
 window.onload = () => {
   cargarProductos()
