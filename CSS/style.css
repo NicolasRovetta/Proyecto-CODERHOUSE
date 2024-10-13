@@ -4,6 +4,21 @@
   box-sizing: border-box;
 }
 
+.agregar-carrito {
+  margin-top: 15px;
+  background-color: rgb(87, 148, 105);
+  border-radius: 10%;
+  border: 2px;
+}
+
+.agregar-carrito:hover{
+  background-color: rgba(87, 148, 105, 0.7);
+}
+
+.derecha{
+  margin-left: 5px;
+}
+
 h1 {
   position: absolute;
   left: 50%;
@@ -142,6 +157,7 @@ h3 {
   cursor: default;
   transition: background-color 0.3s ease;
   margin-right: 5px;
+  border:transparent
 }
 .izquierda:hover, .derecha:hover {
   background-color: rgba(1, 2, 1, 0.7);
